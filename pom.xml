@@ -50,10 +50,18 @@
 
     <dependency>
       <groupId>algo</groupId>
-      <artifactId>Weibull</artifactId>
+      <artifactId>getfigure</artifactId>
       <version>1.0</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/WeibullJA.jar</systemPath>
+      <systemPath>${project.basedir}/lib/getfigure.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>algo</groupId>
+      <artifactId>getparameter</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/getparameter.jar</systemPath>
     </dependency>
   </dependencies>
   <build>
