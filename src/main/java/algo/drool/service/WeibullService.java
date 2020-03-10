@@ -22,9 +22,10 @@ public class WeibullService {
 
     public Object evaluate() throws MWException {
         Object[] result = {null};
-        Object[] input = {3029D, 3124D, 3248D, 3345D, 3570D, 3755D, 3974D, 3993D, 4254D, 4357D};
+        Object[] input = {new Object[]{3029D, 3124D, 3248D, 3345D, 3570D, 3755D, 3974D, 3993D, 4254D, 4357D}};
         getparameter.getparameter(result, input);
         MWNumericArray numericArray = (MWNumericArray)result[0];
+
         return plot(numericArray);
 //        return numericArray.toDoubleArray();
     }
