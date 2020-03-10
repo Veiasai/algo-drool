@@ -10,16 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Router {
-    @Autowired
-    private WeibullService weibullService;
 
-    @PostMapping("/weibull")
-    public Object weibull(@RequestBody WeibullInputBody weibullInputBody) {
-        try {
-            return weibullService.evaluate();
-        } catch (MWException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
