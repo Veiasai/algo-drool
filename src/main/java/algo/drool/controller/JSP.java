@@ -16,10 +16,10 @@ public class JSP {
     @Autowired
     private WeibullService weibullService;
 
-    @PostMapping("/weibulljsp")
+    @PostMapping("/weibull")
     public String weibull(@RequestBody WeibullInputBody weibullInputBody, Model model) {
         try {
-            model.addAttribute("MyFigure", weibullService.evaluate());
+            model.addAttribute("MyFigure", weibullService.evaluate(weibullInputBody.getData()));
         } catch (MWException e) {
             e.printStackTrace();
         }

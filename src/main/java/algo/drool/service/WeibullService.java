@@ -9,6 +9,8 @@ import getfigure.Getfigure;
 import getparameter.Getparameter;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WeibullService {
 
@@ -20,9 +22,9 @@ public class WeibullService {
         this.getparameter = new Getparameter();
     }
 
-    public Object evaluate() throws MWException {
+    public Object evaluate(List<Double> args) throws MWException {
         Object[] result = {null};
-        Object[] input = {new Object[]{3029D, 3124D, 3248D, 3345D, 3570D, 3755D, 3974D, 3993D, 4254D, 4357D}};
+        Object[] input = {args.toArray()};
         getparameter.getparameter(result, input);
         MWNumericArray numericArray = (MWNumericArray)result[0];
         System.out.println(numericArray.toDoubleArray());
