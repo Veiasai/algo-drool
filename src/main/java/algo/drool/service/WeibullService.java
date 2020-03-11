@@ -26,17 +26,13 @@ public class WeibullService {
         Object[] result = {null};
         Object[] input = {args.toArray()};
         getparameter.getparameter(result, input);
-        MWNumericArray numericArray = (MWNumericArray)result[0];
-        System.out.println(numericArray.toDoubleArray());
-        return plot(numericArray);
-//        return numericArray.toDoubleArray();
+        return result[0];
     }
 
-    public Object plot(MWNumericArray array) throws MWException {
+    public Object plot(Object args) throws MWException {
         Object[] result = {null};
-        Object[] input = {array};
+        Object[] input = {args};
         getfigure.getfigure(result, input);
-        WebFigure webFigure = (WebFigure) ((MWJavaObjectRef)result[0]).get();
-        return webFigure;
+        return ((MWJavaObjectRef)result[0]).get();
     }
 }

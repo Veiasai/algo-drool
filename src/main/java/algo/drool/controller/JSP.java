@@ -3,6 +3,7 @@ package algo.drool.controller;
 import algo.drool.controller.body.WeibullInputBody;
 import algo.drool.service.WeibullService;
 import com.mathworks.toolbox.javabuilder.MWException;
+import com.mathworks.toolbox.javabuilder.MWNumericArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,10 @@ public class JSP {
     @PostMapping("/weibull")
     public String weibull(@RequestBody WeibullInputBody weibullInputBody, Model model) {
         try {
-            model.addAttribute("MyFigure", weibullService.evaluate(weibullInputBody.getData()));
+            MWNumericArray numericArray = (MWNumericArray) weibullService.evaluate(weibullInputBody.getData());
+            model.addAttribute("a1", numericArray.getDouble(1));
+            model.addAttribute("a2", numericArray.getDouble(2));
+            model.addAttribute("MyFigure", weibullService.plot(numericArray));
         } catch (MWException e) {
             e.printStackTrace();
         }
