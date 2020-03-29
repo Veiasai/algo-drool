@@ -26,7 +26,7 @@ public class UserSolve {
     private UserSolveService userSolveService;
 
     @PostMapping("/usersolve")
-    public UserSolveResponseBody userSolve(@RequestBody UserSolveBody userSolveBody) throws IOException {
+    synchronized public UserSolveResponseBody userSolve(@RequestBody UserSolveBody userSolveBody) throws IOException {
         UserSolveResponseBody userSolveResponseBody = new UserSolveResponseBody();
         String funcFile = System.getProperty("user.home") + "/Documents/MATLAB/InputSolve.m";
         OutputStream f = new FileOutputStream(funcFile);
