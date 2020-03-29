@@ -16,12 +16,13 @@ public class UserSolveService {
     }
 
     public Object[] solve(List<List<Double>> solution) throws MWException {
-        MWNumericArray numericArray = new MWNumericArray();
+        Object[] objects = new Object[solution.size()];
+
         for (int i = 0; i < solution.size(); i++) {
-            numericArray.set(i, solution.get(i).toArray());
+            objects[i]  = solution.get(i).toArray();
         }
         Object[] result = {null};
-        Object[] input = {numericArray};
+        Object[] input = {objects};
         userSolve.usersolve(result, input);
         return result;
     }
