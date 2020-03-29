@@ -69,6 +69,14 @@
       <scope>system</scope>
       <systemPath>${project.basedir}/lib/getparameter.jar</systemPath>
     </dependency>
+
+    <dependency>
+      <groupId>algo</groupId>
+      <artifactId>usersolve</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/usersolve.jar</systemPath>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
