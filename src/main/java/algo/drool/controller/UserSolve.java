@@ -34,6 +34,7 @@ public class UserSolve {
         try {
             Object[] res = userSolveService.solve(userSolveBody.getSolution());
             userSolveResponseBody.setFlag(((MWNumericArray)res[2]).getInt());
+
             List<List<Double>> x = new ArrayList<>();
             Object[] xObj = ((MWNumericArray) res[0]).toArray();
             for (int i = 0; i < xObj.length; i++) {
@@ -43,7 +44,7 @@ public class UserSolve {
 
             List<List<Double>> fval = new ArrayList<>();
             Object[] fvalObj = ((MWNumericArray) res[1]).toArray();
-            for (int i = 0; i < xObj.length; i++) {
+            for (int i = 0; i < fvalObj.length; i++) {
                 fval.add(DoubleStream.of((double[]) fvalObj[i]).boxed().collect(Collectors.toCollection(ArrayList::new)));
             }
             userSolveResponseBody.setFval(fval);
