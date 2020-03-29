@@ -4,6 +4,7 @@ import algo.drool.controller.body.UserSolveBody;
 import algo.drool.controller.response.UserSolveResponseBody;
 import algo.drool.service.UserSolveService;
 import com.mathworks.toolbox.javabuilder.MWException;
+import com.mathworks.toolbox.javabuilder.MWNumericArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 @RestController
 public class UserSolve {
@@ -30,18 +33,18 @@ public class UserSolve {
         f.write(userSolveBody.getFunction().getBytes());
         try {
             Object[] res = userSolveService.solve(userSolveBody.getSolution());
-            userSolveResponseBody.setFlag((Integer)res[2]);
+            userSolveResponseBody.setFlag(((MWNumericArray)res[2]).getInt());
             List<List<Double>> x = new ArrayList<>();
-            Object[] xObj = (Object[]) res[0];
+            Object[] xObj = ((MWNumericArray) res[0]).toArray();
             for (int i = 0; i < xObj.length; i++) {
-                x.add(new ArrayList<>(Arrays.asList((Double[])xObj[i])));
+                x.add(DoubleStream.of((double[]) xObj[i]).boxed().collect(Collectors.toCollection(ArrayList::new)));
             }
             userSolveResponseBody.setX(x);
 
             List<List<Double>> fval = new ArrayList<>();
-            Object[] fvalObj = (Object[]) res[1];
+            Object[] fvalObj = ((MWNumericArray) res[1]).toArray();
             for (int i = 0; i < xObj.length; i++) {
-                fval.add(new ArrayList<>(Arrays.asList((Double[])fvalObj[i])));
+                fval.add(DoubleStream.of((double[]) fvalObj[i]).boxed().collect(Collectors.toCollection(ArrayList::new)));
             }
             userSolveResponseBody.setFval(fval);
         } catch (MWException e) {
