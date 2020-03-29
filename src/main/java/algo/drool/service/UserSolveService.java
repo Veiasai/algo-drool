@@ -21,7 +21,7 @@ public class UserSolveService {
         for (int i = 0; i < solution.size(); i++) {
             objects[i]  = solution.get(i).toArray();
         }
-        Object[] result = {null};
+        Object[] result = {null, null, null};
         Object[] input = {objects};
         userSolve.usersolve(result, input);
         return result;
