@@ -50,6 +50,7 @@ public class UserSolve {
             userSolveResponseBody.setFval(fval);
         } catch (MWException e) {
             e.printStackTrace();
+            userSolveResponseBody.setErrorInfo(e.getMessage());
         }
         return userSolveResponseBody;
     }

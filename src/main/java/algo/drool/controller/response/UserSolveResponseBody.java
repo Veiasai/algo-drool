@@ -6,6 +6,15 @@ public class UserSolveResponseBody {
     private Integer flag;
     private List<List<Double>> x;
     private List<List<Double>> fval;
+    private String errorInfo;
+
+    public String getErrorInfo() {
+        return errorInfo;
+    }
+
+    public void setErrorInfo(String errorInfo) {
+        this.errorInfo = errorInfo;
+    }
 
     public List<List<Double>> getX() {
         return x;
