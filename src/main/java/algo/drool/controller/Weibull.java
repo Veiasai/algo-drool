@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes(value = {"MyFigure"})
-public class JSP {
+public class Weibull {
     @Autowired
     private WeibullService weibullService;
 
